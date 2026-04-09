@@ -1,4 +1,4 @@
-const CACHE_NAME = "pomodoro-v1";
+const CACHE_NAME = "pomodoro-v2";
 const STATIC_ASSETS = ["/", "/manifest.json"];
 
 self.addEventListener("install", (event) => {
@@ -23,7 +23,15 @@ self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
   if (event.request.url.includes("/api/")) return;
 
+  // Network-first, bypass HTTP cache to always get fresh content when online
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
+    fetch(event.request, { cache: "no-store" })
+      .then((response) => {
+        // Update cache with fresh response for offline fallback
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
