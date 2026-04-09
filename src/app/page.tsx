@@ -7,7 +7,7 @@ import { TimerControls } from "@/components/timer-controls";
 import { SessionTracker } from "@/components/session-tracker";
 import { DurationPicker } from "@/components/duration-picker";
 import { AmbientSounds } from "@/components/ambient-sounds";
-import { BreakOverlay } from "@/components/break-overlay";
+import { BreakOverlay, EYE_TIPS } from "@/components/break-overlay";
 import { WelcomeModal } from "@/components/welcome-modal";
 import { useTimer } from "@/hooks/use-timer";
 import { useTheme } from "@/hooks/use-theme";
@@ -23,6 +23,7 @@ export default function Home() {
 
   const [showBreakOverlay, setShowBreakOverlay] = useState(false);
   const [breakIsLong, setBreakIsLong] = useState(false);
+  const [currentTip, setCurrentTip] = useState<{ title: string; text: string } | null>(null);
 
   // Request notification permission on first interaction
   const hasRequestedNotif = useRef(false);
@@ -40,6 +41,7 @@ export default function Home() {
       timer.completeWorkSession();
       const isLong = (timer.sessionsCompleted + 1) % 4 === 0;
       setBreakIsLong(isLong);
+      setCurrentTip(EYE_TIPS[Math.floor(Math.random() * EYE_TIPS.length)]);
       setShowBreakOverlay(true);
       ambient.pause();
     } else {
@@ -79,6 +81,7 @@ export default function Home() {
   const handleStartWork = useCallback(() => {
     requestNotifPermission();
     setShowBreakOverlay(false);
+    setCurrentTip(null);
     timer.startWork();
     if (ambient.sound !== "silence") {
       ambient.playSound(ambient.sound, ambient.volume);
@@ -125,7 +128,7 @@ export default function Home() {
 
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-8 gap-8">
         {/* Timer */}
-        <TimerDisplay remaining={timer.remaining} mode={timer.mode} />
+        <TimerDisplay remaining={timer.remaining} mode={timer.mode} eyeTip={currentTip} />
 
         {/* Session tracker */}
         <SessionTracker
@@ -180,6 +183,7 @@ export default function Home() {
         isLongBreak={breakIsLong}
         onStartBreak={handleStartBreak}
         onSkipBreak={handleSkipBreak}
+        tip={currentTip}
       />
 
       {/* Welcome modal */}

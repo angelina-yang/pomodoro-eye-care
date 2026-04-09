@@ -5,9 +5,10 @@ import type { TimerMode } from "@/hooks/use-timer";
 interface TimerDisplayProps {
   remaining: number;
   mode: TimerMode;
+  eyeTip?: { title: string; text: string } | null;
 }
 
-export function TimerDisplay({ remaining, mode }: TimerDisplayProps) {
+export function TimerDisplay({ remaining, mode, eyeTip }: TimerDisplayProps) {
   const minutes = Math.floor(remaining / 60);
   const seconds = remaining % 60;
   const display = `${minutes}:${seconds.toString().padStart(2, "0")}`;
@@ -35,6 +36,19 @@ export function TimerDisplay({ remaining, mode }: TimerDisplayProps) {
       >
         {display}
       </div>
+      {isBreak && eyeTip && (
+        <div
+          className="mt-6 mx-auto max-w-sm rounded-xl p-4 text-left"
+          style={{ background: "var(--accent-surface)", border: "1px solid var(--accent)" }}
+        >
+          <div className="text-xs uppercase tracking-wider mb-1 font-medium" style={{ color: "var(--accent)" }}>
+            {eyeTip.title}
+          </div>
+          <div className="text-sm" style={{ color: "var(--text-secondary)" }}>
+            {eyeTip.text}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -7,9 +7,10 @@ interface BreakOverlayProps {
   isLongBreak: boolean;
   onStartBreak: () => void;
   onSkipBreak: () => void;
+  tip?: { title: string; text: string } | null;
 }
 
-const EYE_TIPS = [
+export const EYE_TIPS = [
   { title: "20-20-20 Rule", text: "Look at something 20 feet away for 20 seconds." },
   { title: "Deep Breathing", text: "Close your eyes and take 5 slow, deep breaths." },
   { title: "Eye Rolls", text: "Roll your eyes in circles — clockwise, then counter-clockwise." },
@@ -49,13 +50,11 @@ function sendNotification(isLongBreak: boolean) {
   }
 }
 
-export function BreakOverlay({ visible, isLongBreak, onStartBreak, onSkipBreak }: BreakOverlayProps) {
-  const [tipIndex, setTipIndex] = useState(0);
+export function BreakOverlay({ visible, isLongBreak, onStartBreak, onSkipBreak, tip: externalTip }: BreakOverlayProps) {
   const hasPlayedRef = useRef(false);
 
   useEffect(() => {
     if (visible) {
-      setTipIndex(Math.floor(Math.random() * EYE_TIPS.length));
       if (!hasPlayedRef.current) {
         playAlarm();
         sendNotification(isLongBreak);
@@ -68,7 +67,7 @@ export function BreakOverlay({ visible, isLongBreak, onStartBreak, onSkipBreak }
 
   if (!visible) return null;
 
-  const tip = EYE_TIPS[tipIndex];
+  const tip = externalTip || EYE_TIPS[0];
 
   return (
     <div
