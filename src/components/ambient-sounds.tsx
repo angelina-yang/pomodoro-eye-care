@@ -7,21 +7,22 @@ interface AmbientSoundsProps {
   volume: number;
   onSoundChange: (s: SoundType) => void;
   onVolumeChange: (v: number) => void;
+  labels: { ambientSound: string; off: string; white: string; brown: string; rain: string; ocean: string };
 }
 
-const SOUNDS: { type: SoundType; label: string; icon: string }[] = [
-  { type: "silence", label: "Off", icon: "🔇" },
-  { type: "white-noise", label: "White", icon: "〰️" },
-  { type: "brown-noise", label: "Brown", icon: "🟤" },
-  { type: "rain", label: "Rain", icon: "🌧️" },
-  { type: "ocean", label: "Ocean", icon: "🌊" },
-];
+export function AmbientSounds({ sound, volume, onSoundChange, onVolumeChange, labels }: AmbientSoundsProps) {
+  const SOUNDS: { type: SoundType; label: string; icon: string }[] = [
+    { type: "silence", label: labels.off, icon: "🔇" },
+    { type: "white-noise", label: labels.white, icon: "〰️" },
+    { type: "brown-noise", label: labels.brown, icon: "🟤" },
+    { type: "rain", label: labels.rain, icon: "🌧️" },
+    { type: "ocean", label: labels.ocean, icon: "🌊" },
+  ];
 
-export function AmbientSounds({ sound, volume, onSoundChange, onVolumeChange }: AmbientSoundsProps) {
   return (
     <div className="flex flex-col items-center gap-3">
       <span className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-        Ambient Sound
+        {labels.ambientSound}
       </span>
       <div className="flex gap-2">
         {SOUNDS.map(s => (

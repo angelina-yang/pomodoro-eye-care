@@ -5,9 +5,20 @@ import { useState } from "react";
 interface WelcomeModalProps {
   isOpen: boolean;
   onComplete: (name: string, email: string) => void;
+  labels: {
+    welcomeTitle: string;
+    welcomeDesc: string;
+    name: string;
+    yourName: string;
+    email: string;
+    emailPlaceholder: string;
+    newsletterText: string;
+    getStarted: string;
+    settingUp: string;
+  };
 }
 
-export function WelcomeModal({ isOpen, onComplete }: WelcomeModalProps) {
+export function WelcomeModal({ isOpen, onComplete, labels }: WelcomeModalProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [newsletter, setNewsletter] = useState(false);
@@ -57,7 +68,6 @@ export function WelcomeModal({ isOpen, onComplete }: WelcomeModalProps) {
         }}
       >
         <div className="text-center mb-6">
-          {/* Logo */}
           <div
             className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4"
             style={{ background: "var(--accent)" }}
@@ -68,24 +78,23 @@ export function WelcomeModal({ isOpen, onComplete }: WelcomeModalProps) {
             </svg>
           </div>
           <h2 className="text-2xl font-bold mb-2" style={{ color: "var(--text-primary)" }}>
-            Pomodoro Eye Care
+            {labels.welcomeTitle}
           </h2>
           <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-            Focus timer with eye health reminders and ambient sounds.
-            A free tool by TwoSetAI.
+            {labels.welcomeDesc}
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>
-              Name
+              {labels.name}
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Your name"
+              placeholder={labels.yourName}
               className="w-full px-3 py-2.5 rounded-lg text-sm focus:outline-none focus:ring-1"
               style={inputStyle}
             />
@@ -93,13 +102,13 @@ export function WelcomeModal({ isOpen, onComplete }: WelcomeModalProps) {
 
           <div>
             <label className="block text-sm font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>
-              Email
+              {labels.email}
             </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
+              placeholder={labels.emailPlaceholder}
               className="w-full px-3 py-2.5 rounded-lg text-sm focus:outline-none focus:ring-1"
               style={inputStyle}
             />
@@ -114,7 +123,7 @@ export function WelcomeModal({ isOpen, onComplete }: WelcomeModalProps) {
               style={{ accentColor: "var(--accent)" }}
             />
             <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              Subscribe to the{" "}
+              {labels.newsletterText}{" "}
               <a
                 href="https://angelinayang.substack.com"
                 target="_blank"
@@ -122,9 +131,7 @@ export function WelcomeModal({ isOpen, onComplete }: WelcomeModalProps) {
                 style={{ color: "var(--accent)" }}
               >
                 TwoSetAI newsletter
-              </a>{" "}
-              -- new free AI tools, founder insights, and early access to what
-              I&apos;m building
+              </a>
             </p>
           </div>
 
@@ -134,7 +141,7 @@ export function WelcomeModal({ isOpen, onComplete }: WelcomeModalProps) {
             className="w-full py-2.5 text-white font-medium rounded-lg transition-colors mt-2 disabled:opacity-40"
             style={{ background: "var(--accent)" }}
           >
-            {submitting ? "Setting up..." : "Get Started"}
+            {submitting ? labels.settingUp : labels.getStarted}
           </button>
         </form>
       </div>

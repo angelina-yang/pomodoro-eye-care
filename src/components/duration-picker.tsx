@@ -8,6 +8,7 @@ interface DurationPickerProps {
   onChangeBreak: (m: number) => void;
   onChangeLongBreak: (m: number) => void;
   disabled: boolean;
+  labels: { focus: string; breakLabel: string; longBreakLabel: string };
 }
 
 function PillGroup({
@@ -49,37 +50,15 @@ function PillGroup({
 }
 
 export function DurationPicker({
-  workMinutes,
-  breakMinutes,
-  longBreakMinutes,
-  onChangeWork,
-  onChangeBreak,
-  onChangeLongBreak,
-  disabled,
+  workMinutes, breakMinutes, longBreakMinutes,
+  onChangeWork, onChangeBreak, onChangeLongBreak,
+  disabled, labels,
 }: DurationPickerProps) {
   return (
     <div className="flex flex-wrap gap-6 justify-center">
-      <PillGroup
-        label="Focus"
-        options={[15, 25, 30, 45, 60]}
-        value={workMinutes}
-        onChange={onChangeWork}
-        disabled={disabled}
-      />
-      <PillGroup
-        label="Break"
-        options={[5, 10, 15]}
-        value={breakMinutes}
-        onChange={onChangeBreak}
-        disabled={disabled}
-      />
-      <PillGroup
-        label="Long Break"
-        options={[15, 20, 30]}
-        value={longBreakMinutes}
-        onChange={onChangeLongBreak}
-        disabled={disabled}
-      />
+      <PillGroup label={labels.focus} options={[15, 25, 30, 45, 60]} value={workMinutes} onChange={onChangeWork} disabled={disabled} />
+      <PillGroup label={labels.breakLabel} options={[5, 10, 15]} value={breakMinutes} onChange={onChangeBreak} disabled={disabled} />
+      <PillGroup label={labels.longBreakLabel} options={[15, 20, 30]} value={longBreakMinutes} onChange={onChangeLongBreak} disabled={disabled} />
     </div>
   );
 }

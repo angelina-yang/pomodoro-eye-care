@@ -6,19 +6,13 @@ interface TimerDisplayProps {
   remaining: number;
   mode: TimerMode;
   eyeTip?: { title: string; text: string } | null;
+  statusLabels: Record<TimerMode, string>;
 }
 
-export function TimerDisplay({ remaining, mode, eyeTip }: TimerDisplayProps) {
+export function TimerDisplay({ remaining, mode, eyeTip, statusLabels }: TimerDisplayProps) {
   const minutes = Math.floor(remaining / 60);
   const seconds = remaining % 60;
   const display = `${minutes}:${seconds.toString().padStart(2, "0")}`;
-
-  const statusLabel: Record<TimerMode, string> = {
-    idle: "Ready",
-    work: "Focusing",
-    break: "Short Break",
-    longBreak: "Long Break",
-  };
 
   const isBreak = mode === "break" || mode === "longBreak";
 
@@ -28,7 +22,7 @@ export function TimerDisplay({ remaining, mode, eyeTip }: TimerDisplayProps) {
         className="text-sm uppercase tracking-[3px] mb-3 font-medium"
         style={{ color: isBreak ? "var(--break-text)" : "var(--text-muted)" }}
       >
-        {statusLabel[mode]}
+        {statusLabels[mode]}
       </div>
       <div
         className="text-[7rem] sm:text-[9rem] font-extralight leading-none tabular-nums"

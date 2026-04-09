@@ -8,9 +8,10 @@ interface TimerControlsProps {
   onStop: () => void;
   onStartBreak: () => void;
   onSkipBreak: () => void;
+  labels: { startFocus: string; stop: string; skipBreak: string };
 }
 
-export function TimerControls({ mode, onStartWork, onStop, onStartBreak, onSkipBreak }: TimerControlsProps) {
+export function TimerControls({ mode, onStartWork, onStop, onSkipBreak, labels }: TimerControlsProps) {
   const buttonBase = "px-6 py-3 rounded-xl text-sm font-medium transition-all";
 
   if (mode === "idle") {
@@ -21,7 +22,7 @@ export function TimerControls({ mode, onStartWork, onStop, onStartBreak, onSkipB
           className={`${buttonBase} text-white animate-pulse-ring`}
           style={{ background: "var(--accent)" }}
         >
-          Start Focus
+          {labels.startFocus}
         </button>
       </div>
     );
@@ -35,13 +36,12 @@ export function TimerControls({ mode, onStartWork, onStop, onStartBreak, onSkipB
           className={buttonBase}
           style={{ background: "var(--bg-elevated)", color: "var(--text-secondary)", border: "1px solid var(--border-secondary)" }}
         >
-          Stop
+          {labels.stop}
         </button>
       </div>
     );
   }
 
-  // break or longBreak mode — timer is running
   return (
     <div className="flex gap-3 justify-center">
       <button
@@ -49,14 +49,14 @@ export function TimerControls({ mode, onStartWork, onStop, onStartBreak, onSkipB
         className={buttonBase}
         style={{ background: "var(--bg-elevated)", color: "var(--text-secondary)", border: "1px solid var(--border-secondary)" }}
       >
-        Skip Break
+        {labels.skipBreak}
       </button>
       <button
         onClick={onStop}
         className={buttonBase}
         style={{ background: "var(--bg-elevated)", color: "var(--text-muted)", border: "1px solid var(--border-primary)" }}
       >
-        Stop
+        {labels.stop}
       </button>
     </div>
   );

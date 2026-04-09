@@ -3,15 +3,19 @@
 interface SessionTrackerProps {
   sessionsCompleted: number;
   onReset: () => void;
+  labels: {
+    pomodorosToday: (n: number) => string;
+    cycles: (n: number) => string;
+    reset: string;
+  };
 }
 
-export function SessionTracker({ sessionsCompleted, onReset }: SessionTrackerProps) {
+export function SessionTracker({ sessionsCompleted, onReset, labels }: SessionTrackerProps) {
   const currentInCycle = sessionsCompleted % 4;
   const totalCycles = Math.floor(sessionsCompleted / 4);
 
   return (
     <div className="flex items-center gap-3 justify-center">
-      {/* 4 dots for current cycle */}
       <div className="flex gap-2">
         {[0, 1, 2, 3].map(i => (
           <div
@@ -29,8 +33,8 @@ export function SessionTracker({ sessionsCompleted, onReset }: SessionTrackerPro
       </div>
 
       <span className="text-xs" style={{ color: "var(--text-muted)" }}>
-        {sessionsCompleted} pomodoro{sessionsCompleted !== 1 ? "s" : ""} today
-        {totalCycles > 0 && ` (${totalCycles} cycle${totalCycles !== 1 ? "s" : ""})`}
+        {labels.pomodorosToday(sessionsCompleted)}
+        {totalCycles > 0 && ` ${labels.cycles(totalCycles)}`}
       </span>
 
       {sessionsCompleted > 0 && (
@@ -38,9 +42,9 @@ export function SessionTracker({ sessionsCompleted, onReset }: SessionTrackerPro
           onClick={onReset}
           className="text-xs transition-colors hover:opacity-80"
           style={{ color: "var(--text-faint)" }}
-          title="Reset session count"
+          title={labels.reset}
         >
-          Reset
+          {labels.reset}
         </button>
       )}
     </div>
