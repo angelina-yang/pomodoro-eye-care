@@ -73,7 +73,7 @@ export function BreakOverlay({ visible, isLongBreak, onStartBreak, onSkipBreak }
   return (
     <div
       className="fixed inset-0 z-[200] flex flex-col items-center justify-center animate-fade-in"
-      style={{ background: "var(--overlay-bg)" }}
+      style={{ background: "#000000" }}
     >
       <div className="text-center max-w-md mx-4">
         {/* Eye icon */}
