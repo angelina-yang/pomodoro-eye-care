@@ -75,6 +75,9 @@ interface Translations {
   // Footer
   freeToolBy: string;
 
+  // Spotify
+  openSpotify: string;
+
   // Language
   language: string;
 }
@@ -132,6 +135,7 @@ const en: Translations = {
   getStarted: "Get Started",
   settingUp: "Setting up...",
   freeToolBy: "A free tool by",
+  openSpotify: "Open Focus Playlist on Spotify",
   language: "Language",
 };
 
@@ -188,6 +192,7 @@ const zh: Translations = {
   getStarted: "开始使用",
   settingUp: "设置中...",
   freeToolBy: "免费工具，由",
+  openSpotify: "在 Spotify 上打开专注歌单",
   language: "语言",
 };
 
@@ -244,6 +249,7 @@ const es: Translations = {
   getStarted: "Empezar",
   settingUp: "Configurando...",
   freeToolBy: "Herramienta gratuita de",
+  openSpotify: "Abrir playlist de enfoque en Spotify",
   language: "Idioma",
 };
 
@@ -300,6 +306,7 @@ const ja: Translations = {
   getStarted: "始める",
   settingUp: "設定中...",
   freeToolBy: "無料ツール by",
+  openSpotify: "Spotifyで集中プレイリストを開く",
   language: "言語",
 };
 
@@ -356,6 +363,7 @@ const ko: Translations = {
   getStarted: "시작하기",
   settingUp: "설정 중...",
   freeToolBy: "무료 도구 by",
+  openSpotify: "Spotify에서 집중 플레이리스트 열기",
   language: "언어",
 };
 
@@ -412,6 +420,7 @@ const fr: Translations = {
   getStarted: "Commencer",
   settingUp: "Configuration...",
   freeToolBy: "Outil gratuit de",
+  openSpotify: "Ouvrir une playlist focus sur Spotify",
   language: "Langue",
 };
 
@@ -468,6 +477,7 @@ const de: Translations = {
   getStarted: "Loslegen",
   settingUp: "Wird eingerichtet...",
   freeToolBy: "Kostenloses Tool von",
+  openSpotify: "Fokus-Playlist auf Spotify öffnen",
   language: "Sprache",
 };
 
@@ -524,6 +534,7 @@ const pt: Translations = {
   getStarted: "Começar",
   settingUp: "Configurando...",
   freeToolBy: "Ferramenta gratuita da",
+  openSpotify: "Abrir playlist de foco no Spotify",
   language: "Idioma",
 };
 
