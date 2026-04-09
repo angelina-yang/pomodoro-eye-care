@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   title: "Pomodoro Eye Care",
   description: "Focus timer with eye health reminders and ambient sounds. A free tool by TwoSetAI.",
   manifest: "/manifest.json",
+  icons: {
+    icon: "/favicon-32.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
