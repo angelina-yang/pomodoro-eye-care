@@ -16,7 +16,7 @@ A free focus timer with eye health reminders and ambient sounds.
 
 ## Tech
 
-Next.js, TypeScript, Tailwind CSS, Web Audio API. No backend, no database, no external APIs. Runs entirely in the browser.
+Next.js, TypeScript, Tailwind CSS, Web Audio API.
 
 ## Getting Started
 
