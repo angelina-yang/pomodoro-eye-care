@@ -12,7 +12,6 @@ A free focus timer with eye health reminders and ambient sounds.
 - Ambient focus sounds: white noise, brown noise, rain, ocean waves (all generated in-browser, no audio files)
 - 4-pomodoro cycles with automatic long breaks
 - Dark and light themes
-- Works offline as a PWA
 
 ## Tech
 
