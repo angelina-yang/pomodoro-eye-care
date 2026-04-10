@@ -22,12 +22,13 @@ export function WelcomeModal({ isOpen, onComplete, labels }: WelcomeModalProps) 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [newsletter, setNewsletter] = useState(false);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   if (!isOpen) return null;
 
   const canSubmit =
-    name.trim() && email.trim() && email.includes("@") && !submitting;
+    name.trim() && email.trim() && email.includes("@") && agreedToTerms && !submitting;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -131,6 +132,27 @@ export function WelcomeModal({ isOpen, onComplete, labels }: WelcomeModalProps) 
                 style={{ color: "var(--accent)" }}
               >
                 TwoSetAI newsletter
+              </a>
+            </p>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <input
+              type="checkbox"
+              checked={agreedToTerms}
+              onChange={(e) => setAgreedToTerms(e.target.checked)}
+              className="mt-0.5 w-4 h-4 rounded"
+              style={{ accentColor: "var(--accent)" }}
+            />
+            <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              I agree to the{" "}
+              <a
+                href="https://www.twosetai.com/lab/terms/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "var(--accent)" }}
+              >
+                TwoSetAI Lab Terms of Use
               </a>
             </p>
           </div>
