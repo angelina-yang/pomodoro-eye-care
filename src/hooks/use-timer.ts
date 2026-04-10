@@ -127,8 +127,9 @@ export function useTimer() {
 
   const skipBreak = useCallback(() => {
     clearTimer();
-    startWork();
-  }, [clearTimer, startWork]);
+    setMode("idle");
+    setRemaining(settings.workMinutes * 60);
+  }, [clearTimer, settings.workMinutes]);
 
   const updateSettings = useCallback((newSettings: Partial<TimerSettings>) => {
     setSettingsState(prev => {
