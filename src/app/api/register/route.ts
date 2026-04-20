@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Valid name required" }, { status: 400 });
     }
 
-    // 1. Log to Google Sheet (always — captures all signups)
+    // 1. Log to signup webhook (always — captures all signups)
     const sheetWebhook = process.env.GOOGLE_SHEET_WEBHOOK;
     if (sheetWebhook) {
       try {
@@ -42,9 +42,9 @@ export async function POST(req: NextRequest) {
           }
         }
 
-        console.log(`[Register] Google Sheet response: ${sheetRes.status}`);
+        console.log(`[Register] Webhook response: ${sheetRes.status}`);
       } catch (sheetErr) {
-        console.error("[Register] Google Sheet logging failed:", sheetErr);
+        console.error("[Register] Webhook logging failed:", sheetErr);
       }
     }
 
