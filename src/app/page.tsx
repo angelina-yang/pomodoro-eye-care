@@ -9,6 +9,7 @@ import { DurationPicker } from "@/components/duration-picker";
 import { AmbientSounds } from "@/components/ambient-sounds";
 import { BreakOverlay } from "@/components/break-overlay";
 import { WelcomeModal } from "@/components/welcome-modal";
+import { SupportLinks } from "@/components/support-links";
 import { useTimer } from "@/hooks/use-timer";
 import { useTheme } from "@/hooks/use-theme";
 import { useUser } from "@/hooks/use-user";
@@ -226,11 +227,14 @@ export default function Home() {
         </a>
       </main>
 
-      <footer className="text-center py-4 text-xs" style={{ color: "var(--text-faint)" }}>
-        {t.freeToolBy}{" "}
-        <a href="https://twosetai.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>
-          TwoSetAI
-        </a>
+      <footer className="flex flex-col items-center gap-2 py-4 text-xs" style={{ color: "var(--text-faint)" }}>
+        <div>
+          {t.freeToolBy}{" "}
+          <a href="https://twosetai.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>
+            TwoSetAI
+          </a>
+        </div>
+        <SupportLinks appName="Pomodoro Eye Care" />
       </footer>
 
       <BreakOverlay
