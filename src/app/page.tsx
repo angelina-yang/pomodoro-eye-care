@@ -167,7 +167,7 @@ export default function Home() {
           onStartWork={handleStartWork}
           onStop={handleStop}
           onStartBreak={handleStartBreak}
-          onSkipBreak={timer.skipBreak}
+          onSkipBreak={handleSkipBreak}
           labels={{
             startFocus: t.startFocus,
             stop: t.stop,
