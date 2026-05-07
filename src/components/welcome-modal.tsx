@@ -165,6 +165,7 @@ export function WelcomeModal({ isOpen, onComplete, labels }: WelcomeModalProps) 
               >
                 TwoSetAI Lab Terms of Use
               </a>
+              . This is a free, experimental tool.
             </p>
           </div>
 
