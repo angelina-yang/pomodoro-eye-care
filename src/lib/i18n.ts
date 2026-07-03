@@ -78,6 +78,12 @@ interface Translations {
   // Spotify
   openSpotify: string;
 
+  // World clock
+  worldClock: string;
+  addCity: string;
+  searchCities: string;
+  done: string;
+
   // Language
   language: string;
 }
@@ -136,6 +142,10 @@ const en: Translations = {
   settingUp: "Setting up...",
   freeToolBy: "A free tool by",
   openSpotify: "Open Focus Playlist on Spotify",
+  worldClock: "World Clock",
+  addCity: "Add city",
+  searchCities: "Search cities",
+  done: "Done",
   language: "Language",
 };
 
@@ -193,6 +203,10 @@ const zh: Translations = {
   settingUp: "设置中...",
   freeToolBy: "免费工具，由",
   openSpotify: "在 Spotify 上打开专注歌单",
+  worldClock: "世界时钟",
+  addCity: "添加城市",
+  searchCities: "搜索城市",
+  done: "完成",
   language: "语言",
 };
 
@@ -250,6 +264,10 @@ const es: Translations = {
   settingUp: "Configurando...",
   freeToolBy: "Herramienta gratuita de",
   openSpotify: "Abrir playlist de enfoque en Spotify",
+  worldClock: "Reloj mundial",
+  addCity: "Añadir ciudad",
+  searchCities: "Buscar ciudades",
+  done: "Hecho",
   language: "Idioma",
 };
 
@@ -307,6 +325,10 @@ const ja: Translations = {
   settingUp: "設定中...",
   freeToolBy: "無料ツール by",
   openSpotify: "Spotifyで集中プレイリストを開く",
+  worldClock: "世界時計",
+  addCity: "都市を追加",
+  searchCities: "都市を検索",
+  done: "完了",
   language: "言語",
 };
 
@@ -364,6 +386,10 @@ const ko: Translations = {
   settingUp: "설정 중...",
   freeToolBy: "무료 도구 by",
   openSpotify: "Spotify에서 집중 플레이리스트 열기",
+  worldClock: "세계 시계",
+  addCity: "도시 추가",
+  searchCities: "도시 검색",
+  done: "완료",
   language: "언어",
 };
 
@@ -421,6 +447,10 @@ const fr: Translations = {
   settingUp: "Configuration...",
   freeToolBy: "Outil gratuit de",
   openSpotify: "Ouvrir une playlist focus sur Spotify",
+  worldClock: "Horloge mondiale",
+  addCity: "Ajouter une ville",
+  searchCities: "Rechercher des villes",
+  done: "Terminé",
   language: "Langue",
 };
 
@@ -478,6 +508,10 @@ const de: Translations = {
   settingUp: "Wird eingerichtet...",
   freeToolBy: "Kostenloses Tool von",
   openSpotify: "Fokus-Playlist auf Spotify öffnen",
+  worldClock: "Weltuhr",
+  addCity: "Stadt hinzufügen",
+  searchCities: "Städte suchen",
+  done: "Fertig",
   language: "Sprache",
 };
 
@@ -535,6 +569,10 @@ const pt: Translations = {
   settingUp: "Configurando...",
   freeToolBy: "Ferramenta gratuita da",
   openSpotify: "Abrir playlist de foco no Spotify",
+  worldClock: "Relógio mundial",
+  addCity: "Adicionar cidade",
+  searchCities: "Buscar cidades",
+  done: "Concluído",
   language: "Idioma",
 };
 

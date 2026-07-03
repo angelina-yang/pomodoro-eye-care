@@ -10,11 +10,13 @@ import { AmbientSounds } from "@/components/ambient-sounds";
 import { BreakOverlay } from "@/components/break-overlay";
 import { WelcomeModal } from "@/components/welcome-modal";
 import { SupportLinks } from "@/components/support-links";
+import { WorldClock } from "@/components/world-clock";
 import { useTimer } from "@/hooks/use-timer";
 import { useTheme } from "@/hooks/use-theme";
 import { useUser } from "@/hooks/use-user";
 import { useAmbient } from "@/hooks/use-ambient";
 import { useLanguage } from "@/hooks/use-language";
+import { useWorldClock } from "@/hooks/use-world-clock";
 import { getTranslations } from "@/lib/i18n";
 import type { TimerMode } from "@/hooks/use-timer";
 
@@ -24,6 +26,7 @@ export default function Home() {
   const timer = useTimer();
   const ambient = useAmbient();
   const lang = useLanguage();
+  const worldClock = useWorldClock();
 
   const t = getTranslations(lang.language);
 
@@ -225,6 +228,21 @@ export default function Home() {
           </svg>
           {t.openSpotify}
         </a>
+
+        {worldClock.loaded && (
+          <WorldClock
+            cityIds={worldClock.cityIds}
+            now={worldClock.now}
+            onAdd={worldClock.addCity}
+            onRemove={worldClock.removeCity}
+            labels={{
+              worldClock: t.worldClock,
+              addCity: t.addCity,
+              searchCities: t.searchCities,
+              done: t.done,
+            }}
+          />
+        )}
       </main>
 
       <footer className="flex flex-col items-center gap-2 py-4 text-xs" style={{ color: "var(--text-faint)" }}>
