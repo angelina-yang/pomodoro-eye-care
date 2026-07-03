@@ -28,19 +28,23 @@ export function WorldClock({ cityIds, now, onAdd, onRemove, labels }: WorldClock
 
   return (
     <div className="w-full max-w-xl">
-      <div
-        className="flex items-center justify-between mb-2 px-1"
-        style={{ color: "var(--text-faint)" }}
-      >
-        <span className="text-[10px] uppercase tracking-widest font-medium">
+      <div className="flex items-center justify-between mb-3 px-1">
+        <span
+          className="text-xs uppercase tracking-widest font-medium"
+          style={{ color: "var(--text-muted)" }}
+        >
           {labels.worldClock}
         </span>
         <button
           onClick={() => setEditing(v => !v)}
-          className="text-[10px] uppercase tracking-widest font-medium transition-colors hover:opacity-70"
-          style={{ color: "var(--accent)" }}
+          className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all hover:opacity-80"
+          style={{
+            background: editing ? "var(--accent)" : "var(--accent-surface)",
+            color: editing ? "white" : "var(--accent)",
+            border: "1px solid var(--accent)",
+          }}
         >
-          {editing ? labels.done : "+"}
+          {editing ? labels.done : `+ ${labels.addCity}`}
         </button>
       </div>
 
