@@ -62,8 +62,8 @@ export function WorldClock({ cityIds, now, onAdd, onRemove, labels }: WorldClock
                 color: "var(--text-secondary)",
               }}
             >
-              <span style={{ color: "var(--text-muted)" }}>{city.label}</span>
-              <span className="tabular-nums font-medium" style={{ color: "var(--text-primary)" }}>
+              <span className="font-medium" style={{ color: "var(--text-primary)" }}>{city.label}</span>
+              <span className="tabular-nums font-medium" style={{ color: "var(--accent)" }}>
                 {formatCityTime(city.timezone, now)}
               </span>
               {editing && (
